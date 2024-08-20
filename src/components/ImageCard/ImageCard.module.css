@@ -1,0 +1,8 @@
+.image {
+  width: 320px;
+  height: 240px;
+  display: block;
+}
+.card {
+  border: 1px solid #000;
+}

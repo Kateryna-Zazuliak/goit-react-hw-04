@@ -1,0 +1,17 @@
+.loadMoreBtn {
+  box-sizing: border-box;
+  font-size: 15px;
+  width: 150px;
+  height: 40px;
+  padding: 5px;
+  margin: auto;
+  border: none;
+  background-color: #183cef;
+  color: #fff;
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loadMoreBtn:hover,
+.loadMoreBtn:focus {
+  background-color: #1c01b4;
+}
