@@ -24,6 +24,20 @@ function App() {
       setError(null);
       try {
         const data = await fetchVisionGallery(query, pageNumber);
+        if (!data.total) {
+          toast(
+            "За вашим запитом не знайдено жодного зображення. Спробуйте, будь ласка, з іншим ключовим словом.",
+            {
+              className: css.toaster,
+              iconTheme: {
+                className: css.toasterIcon,
+                primary: "var(--toastify-icon-color-primary)",
+                secondary: "var(--toastify-icon-color-secondary)",
+              },
+            }
+          );
+          return;
+        }
         setImages((prevImages) =>
           pageNumber === 1 ? data.results : [...prevImages, ...data.results]
         );
