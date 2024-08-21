@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { fetchVisionGallery } from "./components/api";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
@@ -6,6 +7,18 @@ import Loader from "../src/components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
+
+const toastStyles = {
+  style: {
+    border: "1px solid #713200",
+    padding: "16px",
+    color: "#713200",
+  },
+  iconTheme: {
+    primary: "#713200",
+    secondary: "#FFFAEE",
+  },
+};
 
 function App() {
   const [images, setImages] = useState([]);
@@ -27,14 +40,7 @@ function App() {
         if (!data.total) {
           toast(
             "За вашим запитом не знайдено жодного зображення. Спробуйте, будь ласка, з іншим ключовим словом.",
-            {
-              className: css.toaster,
-              iconTheme: {
-                className: css.toasterIcon,
-                primary: "var(--toastify-icon-color-primary)",
-                secondary: "var(--toastify-icon-color-secondary)",
-              },
-            }
+            toastStyles
           );
           return;
         }
@@ -68,7 +74,7 @@ function App() {
   }
   return (
     <div>
-      <SearchBar onSubmit={handleSearch} />
+      <SearchBar onSubmit={handleSearch} toastStyles={toastStyles} />
       {error ? (
         <ErrorMessage message={error} />
       ) : (

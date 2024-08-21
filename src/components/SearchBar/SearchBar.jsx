@@ -2,21 +2,12 @@ import css from "./SearchBar.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import { FiSearch } from "react-icons/fi";
 
-const notify = () =>
-  toast("Please enter search word.", {
-    className: css.toaster,
-    iconTheme: {
-      primary: "var(--toastify-icon-color-primary)",
-      secondary: "var(--toastify-icon-color-secondary)",
-    },
-  });
-
-const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSubmit, toastStyles }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const searchQuery = event.target.elements.searchInput.value.trim();
     if (searchQuery === "") {
-      notify();
+      toast("Please enter search word.", toastStyles);
       return;
     }
     onSubmit(searchQuery);
@@ -37,7 +28,7 @@ const SearchBar = ({ onSubmit }) => {
           className={css.searchInput}
         />
       </form>
-      <Toaster toastOptions={{ className: css.toasterIcon }} />
+      <Toaster toastOptions={toastStyles} />
     </header>
   );
 };

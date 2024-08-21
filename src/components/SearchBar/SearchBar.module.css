@@ -38,14 +38,3 @@
 .searchIcon:focus {
   transform: scale(1.1);
 }
-
-.toaster {
-  border: 1px solid #713200;
-  padding: 15px;
-  color: #713200;
-}
-
-.toasterIcon {
-  --toastify-icon-color-primary: #713200;
-  --toastify-icon-color-secondary: #fffaee;
-}
